@@ -51,7 +51,9 @@ public:
 			throw runtime_error("Cantidad invalida de ventanillas solicitadas");
 		}
 		for (int i = 1; i >= cant; i++) {
-			//agregar logica de creacion de ventanilla y agregacion basado en ed utilizada
+			string nombre = codigo.substr(0, 1) + std::to_string(i);
+			Ventanilla v(nombre);
+			ventanillas->append(v);
 		}
 	}
 
@@ -62,6 +64,32 @@ public:
 		delete ventanillas;
 		ventanillas = new ArrayList<Ventanilla>(cant);
 	}
+
+	void addTiquete(Tiquete t) {
+		//pCola->insert(t, t->getPriority());
+	}
+
+	void attend(string vNombre) {
+		if (pCola->isEmpty()) {
+			throw runtime_error("No se encuentran tiquetes en el area actualmente");
+		}
+
+		Ventanilla vSolicitada;
+		for (ventanillas->goToStart(); ventanillas->atEnd();ventanillas->next()) {
+			Ventanilla currentV = ventanillas->getElement();
+			if (vNombre == currentV.getNombre()) {
+				vSolicitada = currentV;
+			}
+		}
+		Tiquete t = pCola->removeMin();
+		vSolicitada.addTiquete(t);
+		cantTiquetes++;
+		//tiempoPromedio = t.getWaitingTime();
+	}
+
+	void print() {}
+
+	void printStatistics() {}
 
 };
 
