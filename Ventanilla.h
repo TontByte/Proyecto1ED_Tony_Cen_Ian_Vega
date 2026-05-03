@@ -11,12 +11,15 @@ using std::string;
 class Ventanilla{
 private:
 	string nombre;
+
+	//atributos de estadisticas
 	int cantTiquetesV;
-	//estadisticas y ya??
+	//ya creo??
 
 public:
 	Ventanilla(string nombre) {
 		this->nombre = nombre;
+		cantTiquetesV = 0;
 	}
 	Ventanilla() {}
 

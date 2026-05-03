@@ -22,9 +22,11 @@ private:
 	string codigo;
 	ArrayList<Ventanilla>* ventanillas;
 	HeapPriorityQueue<Tiquete>* pCola;
+	
+	//atributos para estadisticas
 	int tiempoPromedio;
 	int cantTiquetes;
-	//estadisticas??
+	
 
 public:
 	Area(string descripcion, string codigo, int cantV) {
@@ -32,6 +34,8 @@ public:
 		this->codigo = codigo;
 		ventanillas = new ArrayList<Ventanilla>(cantV);
 		pCola = new HeapPriorityQueue<Tiquete>;
+		tiempoPromedio = 0;
+		cantTiquetes = 0;
 		createV(cantV);
 	}
 
