@@ -2,7 +2,12 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+
+//clases para el funcionamiento interno
 #include "Ventanilla.h"
+#include "Tiquete.h"
+
+//estructuras utilizadas
 #include "MinHeap.h"
 
 using std::cout;
@@ -15,12 +20,10 @@ private:
 	string descripcion;
 	string codigo;
 	//ArrayList?<Ventanilla>* ventanillas;
-	MinHeap<
 
 
 public:
 	Area()
 
-	bool 
 };
 
