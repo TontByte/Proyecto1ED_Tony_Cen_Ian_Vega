@@ -76,6 +76,7 @@ public:
 		siftUp(size);
 		size++;
 	}
+	//agregar que se duplique el tamaño por si acaso
 
 	E first() {
 		if (size == 0) {

@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <string>
 #include "Ventanilla.h"
+#include "MinHeap.h"
 
 using std::cout;
 using std::runtime_error;
@@ -13,8 +14,8 @@ class Area{
 private:
 	string descripcion;
 	string codigo;
-	//agregar eds para poner atributo ventanillas
-	//agregar minheap para cola de prioridad
+	//ArrayList?<Ventanilla>* ventanillas;
+	MinHeap<
 
 
 public:

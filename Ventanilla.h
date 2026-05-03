@@ -14,5 +14,6 @@ private:
 	//creo que solo es esto?
 
 public:
+	Ventanilla() {}
 };
 
