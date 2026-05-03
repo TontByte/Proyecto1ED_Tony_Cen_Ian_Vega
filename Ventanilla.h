@@ -11,9 +11,16 @@ using std::string;
 class Ventanilla{
 private:
 	string nombre;
-	//creo que solo es esto?
+	//estadisticas y ya??
 
 public:
+	Ventanilla(string nombre) {
+		this->nombre = nombre;
+	}
 	Ventanilla() {}
+
+	~Ventanilla() {
+		//???
+	}
 };
 

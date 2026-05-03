@@ -5,6 +5,7 @@
 
 int main()
 {
+    int consecutivoGlobal = 100;
     std::cout << "Hello World!\n";
 }
 
