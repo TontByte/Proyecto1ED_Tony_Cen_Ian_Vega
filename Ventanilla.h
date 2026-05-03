@@ -11,6 +11,7 @@ using std::string;
 class Ventanilla{
 private:
 	string nombre;
+	int cantTiquetesV;
 	//estadisticas y ya??
 
 public:

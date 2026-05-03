@@ -9,6 +9,7 @@
 
 //estructuras utilizadas
 #include "HeapPriorityQueue.h"
+#include "ArrayList.h"
 
 using std::cout;
 using std::runtime_error;
@@ -19,14 +20,17 @@ class Area{
 private:
 	string descripcion;
 	string codigo;
-	//ArrayList?<Ventanilla>* ventanillas;
+	ArrayList<Ventanilla>* ventanillas;
 	HeapPriorityQueue<Tiquete>* pCola;
+	int tiempoPromedio;
+	int cantTiquetes;
 	//estadisticas??
 
 public:
 	Area(string descripcion, string codigo, int cantV) {
 		this->descripcion = descripcion;
 		this->codigo = codigo;
+		ventanillas = new ArrayList<Ventanilla>(cantV);
 		pCola = new HeapPriorityQueue<Tiquete>;
 		createV(cantV);
 	}
@@ -34,8 +38,8 @@ public:
 	Area() {}
 
 	~Area() {
-		//delete ventanillas;
-		//delete pCola;
+		delete ventanillas;
+		delete pCola;
 	}
 
 	void createV(int cant) {
@@ -45,6 +49,14 @@ public:
 		for (int i = 1; i >= cant; i++) {
 			//agregar logica de creacion de ventanilla y agregacion basado en ed utilizada
 		}
+	}
+
+	void modifyV(int cant) {
+		if (cant <= 0) {
+			throw runtime_error("Cantidad invalida de ventanillas solicitadas");
+		}
+		delete ventanillas;
+		ventanillas = new ArrayList<Ventanilla>(cant);
 	}
 
 };
