@@ -8,7 +8,7 @@
 #include "Tiquete.h"
 
 //estructuras utilizadas
-#include "MinHeap.h"
+#include "HeapPriorityQueue.h"
 
 using std::cout;
 using std::runtime_error;
@@ -20,13 +20,14 @@ private:
 	string descripcion;
 	string codigo;
 	//ArrayList?<Ventanilla>* ventanillas;
-	//HeapPriorityQueue<Tiquete>* pCola;
+	HeapPriorityQueue<Tiquete>* pCola;
 	//estadisticas??
 
 public:
 	Area(string descripcion, string codigo, int cantV) {
 		this->descripcion = descripcion;
 		this->codigo = codigo;
+		pCola = new HeapPriorityQueue<Tiquete>;
 		createV(cantV);
 	}
 
