@@ -2,7 +2,6 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
-#include "Ventanilla.h"
 
 using std::cout;
 using std::runtime_error;

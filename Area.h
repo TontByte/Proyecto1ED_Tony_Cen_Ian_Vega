@@ -18,5 +18,8 @@ private:
 
 
 public:
+	Area()
+
+	bool 
 };
 
