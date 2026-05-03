@@ -131,7 +131,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Area.h" />
+    <ClInclude Include="HeapPriorityQueue.h" />
     <ClInclude Include="MinHeap.h" />
+    <ClInclude Include="Pair.h" />
+    <ClInclude Include="PriorityQueue.h" />
     <ClInclude Include="Tiquete.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="Ventanilla.h" />

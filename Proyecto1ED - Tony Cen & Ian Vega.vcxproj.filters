@@ -35,5 +35,14 @@
     <ClInclude Include="Tiquete.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HeapPriorityQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PriorityQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pair.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
