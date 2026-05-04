@@ -1,3 +1,7 @@
+/*
+Clase abstracta PriorityQueue elaborada en clase
+Utilizada para la clase HeapPriorityQueue
+*/
 #pragma once
 
 template <typename E>

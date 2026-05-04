@@ -1,3 +1,9 @@
+/*
+Clase MinHeap elaborada en clase
+Utilizada por la clase HeapPriorityQueue
+Organiza basado en prioridad (menor el numero, mayor la prioridad)
+*/
+
 #pragma once
 #include <stdexcept>
 #include <iostream>

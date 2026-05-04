@@ -1,3 +1,11 @@
+/*
+Esta es la clase Area (escrita principalmente por Tony y revisada/mejorada por Ian)
+Se encarga de todos los objetos Area
+Tiene atributos como la descripcion, el codigo, las ventanillas disponibles y la cola de prioridad
+Tambien guarda las estadisticas del area
+Tiene los metodos principales que se ejecutan en relacion al manejo de tiquetes
+*/
+
 #pragma once
 #include <iostream>
 #include <stdexcept>

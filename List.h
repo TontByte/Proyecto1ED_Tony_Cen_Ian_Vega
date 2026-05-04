@@ -1,3 +1,8 @@
+/*
+Clase abstracta List (con modificacion pequeña en getElement) elaborada en clase
+Utilizada para la clase ArrayList
+*/
+
 #pragma once
 
 template <typename E>

@@ -1,3 +1,9 @@
+/*
+Clase HeapPriorityQueue elaborada en clase
+Utilizada para el atributo pCola en la clase Area
+Tiene como funcion organizar los tiquetes que entran en cada area
+*/
+
 #pragma once
 #include <iostream>
 #include <stdexcept>

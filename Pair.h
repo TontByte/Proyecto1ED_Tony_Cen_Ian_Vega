@@ -1,3 +1,9 @@
+/*
+Clase Pair elaborada en clase
+Utilizada por la clase HeapPriorityQueue
+Guarda dos atributos, el objeto y su prioridad
+*/
+
 #pragma once
 #include <iostream>
 

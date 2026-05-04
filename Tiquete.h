@@ -1,3 +1,9 @@
+/*
+Esta es la clase Tiquete (escrita principalmente por Tony y revisada/mejorada por Ian)
+Se encarga las instancias de los tiquetes creados
+Tiene atributos como el codigo, la prioridad final y datos relacionados a tiempos de atencion
+*/
+
 #pragma once
 #include <iostream>
 #include <stdexcept>

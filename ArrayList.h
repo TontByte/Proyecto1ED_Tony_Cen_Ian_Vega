@@ -1,3 +1,9 @@
+/*
+Clase ArrayList (con modificacion pequeña en getElement) elaborada en clase
+Utilizada para el atributo ventanillas en la clase Area
+Tiene como funcion permitir el acceso a las diferentes ventanillas de las areas
+*/
+
 #pragma once
 #include <iostream>
 #include <stdexcept>
