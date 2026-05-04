@@ -48,6 +48,8 @@ public:
 	}
 
 	Area() {}
+	Area(const Area&) = delete;
+	Area& operator=(const Area&) = delete;
 
 	~Area() {
 		delete ventanillas;
@@ -58,7 +60,7 @@ public:
 		if (cant <= 0) {
 			throw runtime_error("Cantidad invalida de ventanillas solicitadas");
 		}
-		for (int i = 1; i >= cant; i++) {
+		for (int i = 1; i < cant; i++) {
 			string nombre = codigo.substr(0, 1) + std::to_string(i);
 			Ventanilla v(nombre);
 			ventanillas->append(v);

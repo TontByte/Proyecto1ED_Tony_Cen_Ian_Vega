@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Area.h" />
+    <ClInclude Include="AreaManager.h" />
     <ClInclude Include="ArrayList.h" />
     <ClInclude Include="HeapPriorityQueue.h" />
     <ClInclude Include="List.h" />

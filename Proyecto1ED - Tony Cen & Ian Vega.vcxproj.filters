@@ -50,5 +50,8 @@
     <ClInclude Include="ArrayList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AreaManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
