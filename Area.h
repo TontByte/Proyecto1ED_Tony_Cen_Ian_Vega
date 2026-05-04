@@ -65,6 +65,10 @@ public:
 		ventanillas = new ArrayList<Ventanilla>(cant);
 	}
 
+	int getCantV() {
+		return ventanillas->getSize();
+	}
+
 	void addTiquete(Tiquete t) {
 		pCola->insert(t, t.getPriority());
 	}
