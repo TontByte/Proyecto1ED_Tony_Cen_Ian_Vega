@@ -13,7 +13,7 @@ using std::string;
 class Ventanilla{
 private:
 	string nombre;
-	Tiquete tAttended;
+	string atendido;
 
 	//atributos de estadisticas
 	int cantTiquetesV;
@@ -21,25 +21,26 @@ private:
 public:
 	Ventanilla(string nombre) {
 		this->nombre = nombre;
+		atendido = "";
 		cantTiquetesV = 0;
 	}
 	Ventanilla() {}
-
-	~Ventanilla() {
-		//???
-	}
 
 	string getNombre() {
 		return nombre;
 	}
 
-	void addTiquete(Tiquete t) {
-		tAttended = t;
+	void atenderTiquete(string codigo) {
+		atendido = codigo;
 		cantTiquetesV++;
 	}
 
-	void print() {}
+	void print() {
+		cout << nombre << ": " << atendido << endl;
+	}
 
-	void printStatistics() {};
+	void printStatistics() {
+		cout << "Tiquetes atendido en " << nombre << ": " << cantTiquetesV << endl;
+	};
 };
 
