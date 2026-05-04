@@ -39,6 +39,10 @@ public:
 		waitingTime = attended - arrival;
 	}
 
+	int getPriority() {
+		return pt;
+	}
+
 	int getWaitingTime() {
 		if (attended == 0) {
 			throw runtime_error("Tiquete no ha sido atendido");
