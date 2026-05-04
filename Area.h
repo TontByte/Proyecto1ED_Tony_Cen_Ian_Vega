@@ -24,7 +24,7 @@ private:
 	HeapPriorityQueue<Tiquete>* pCola;
 	
 	//atributos para estadisticas
-	int tiempoPromedio;
+	int tiempoTotal;
 	int cantTiquetes;
 	
 
@@ -34,7 +34,7 @@ public:
 		this->codigo = codigo;
 		ventanillas = new ArrayList<Ventanilla>(cantV);
 		pCola = new HeapPriorityQueue<Tiquete>;
-		tiempoPromedio = 0;
+		tiempoTotal = 0;
 		cantTiquetes = 0;
 		createV(cantV);
 	}
@@ -80,13 +80,13 @@ public:
 			Ventanilla& v = ventanillas->getElement();
 			if (vNombre == v.getNombre()) {
 				Tiquete t = pCola->removeMin();
-				t.attend();
-				v.atenderTiquete(t.getCodigo());
+				t.attend(); //el tiquete se atiende para conseguir tiempo de espera
+				v.atenderTiquete(t.getCodigo()); //se agrega el codigo para mostrarse en ventanilla
 				cantTiquetes++;
-				tiempoPromedio += t.getWaitingTime();
+				tiempoTotal += t.getWaitingTime();
 				found = true;
 				break;
-			}
+			} 
 		}
 
 		if (!found) {
@@ -94,9 +94,18 @@ public:
 		}
 	}
 
-	void print() {}
+	void print() {
+		cout << codigo << "(" << descripcion << ")" << endl;
+		for (ventanillas->goToStart(); !ventanillas->atEnd(); ventanillas->next()) {
+			ventanillas->getElement().print();
+		}
+		cout << endl;
+	}
 
-	void printStatistics() {}
+	void printStatistics() {
+		cout << "Tiquetes atendido en " << codigo << ": " << cantTiquetes << endl;
+		cout << "Tiempo promedio de espera: " << tiempoTotal / cantTiquetes << endl;
+	}
 
 };
 
