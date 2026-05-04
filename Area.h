@@ -47,7 +47,11 @@ public:
 		createV(cantV);
 	}
 
-	Area() {}
+	Area() {
+		ventanillas = nullptr;
+		pCola = nullptr;
+	}
+
 	Area(const Area&) = delete;
 	Area& operator=(const Area&) = delete;
 
@@ -60,7 +64,7 @@ public:
 		if (cant <= 0) {
 			throw runtime_error("Cantidad invalida de ventanillas solicitadas");
 		}
-		for (int i = 1; i < cant; i++) {
+		for (int i = 1; i <= cant; i++) {
 			string nombre = codigo.substr(0, 1) + std::to_string(i);
 			Ventanilla v(nombre);
 			ventanillas->append(v);
@@ -73,6 +77,7 @@ public:
 		}
 		delete ventanillas;
 		ventanillas = new ArrayList<Ventanilla>(cant);
+		createV(cant);
 	}
 
 	int getCantV() {
@@ -117,8 +122,13 @@ public:
 	}
 
 	void printStatistics() {
-		cout << "Tiquetes atendido en " << codigo << ": " << cantTiquetes << endl;
-		cout << "Tiempo promedio de espera: " << tiempoTotal / cantTiquetes << endl;
+		if (cantTiquetes == 0) {
+			cout << "No hay tiquetes atendidos en " << codigo << endl;
+		}
+		else {
+			cout << "Tiquetes atendido en " << codigo << ": " << cantTiquetes << endl;
+			cout << "Tiempo promedio de espera: " << tiempoTotal / cantTiquetes << endl;
+		}
 	}
 
 };

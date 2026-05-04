@@ -66,3 +66,5 @@ public:
 	}
 };
 
+int Tiquete::consecutivoGlobal = 100;
+

@@ -11,8 +11,6 @@ Tiene los metodos principales que se ejecutan a la atencion de tiquetes en cada 
 #include <stdexcept>
 #include <string>
 
-#include "Tiquete.h"
-
 using std::cout;
 using std::runtime_error;
 using std::endl;

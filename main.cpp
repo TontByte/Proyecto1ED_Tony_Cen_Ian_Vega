@@ -4,7 +4,7 @@
 #include <iostream>
 #include "Tiquete.h"
 
-int Tiquete::consecutivoGlobal = 100;
+
 
 int main()
 {
