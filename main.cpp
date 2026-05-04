@@ -2,10 +2,12 @@
 //
 
 #include <iostream>
+#include "Tiquete.h"
+
+int Tiquete::consecutivoGlobal = 100;
 
 int main()
 {
-    int consecutivoGlobal = 100;
     std::cout << "Hello World!\n";
 }
 
