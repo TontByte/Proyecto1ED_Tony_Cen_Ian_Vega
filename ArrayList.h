@@ -73,7 +73,8 @@ public:
 		return res;
 	}
 
-	E getElement() {
+	//cambio pequeño para poder recibir el elemento correcto
+	E& getElement() {
 		if (size == 0) {
 			throw runtime_error("List is empty.");
 		}

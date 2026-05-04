@@ -66,7 +66,7 @@ public:
 	}
 
 	void addTiquete(Tiquete t) {
-		//pCola->insert(t, t->getPriority());
+		pCola->insert(t, t.getPriority());
 	}
 
 	void attend(string vNombre) {
@@ -74,17 +74,24 @@ public:
 			throw runtime_error("No se encuentran tiquetes en el area actualmente");
 		}
 
-		Ventanilla vSolicitada;
-		for (ventanillas->goToStart(); ventanillas->atEnd();ventanillas->next()) {
-			Ventanilla currentV = ventanillas->getElement();
-			if (vNombre == currentV.getNombre()) {
-				vSolicitada = currentV;
+		bool found = false;
+
+		for (ventanillas->goToStart(); !ventanillas->atEnd();ventanillas->next()) {
+			Ventanilla& v = ventanillas->getElement();
+			if (vNombre == v.getNombre()) {
+				Tiquete t = pCola->removeMin();
+				t.attend();
+				v.atenderTiquete(t.getCodigo());
+				cantTiquetes++;
+				tiempoPromedio += t.getWaitingTime();
+				found = true;
+				break;
 			}
 		}
-		Tiquete t = pCola->removeMin();
-		vSolicitada.addTiquete(t);
-		cantTiquetes++;
-		//tiempoPromedio = t.getWaitingTime();
+
+		if (!found) {
+			throw runtime_error("Ventanilla no encontrada");
+		}
 	}
 
 	void print() {}

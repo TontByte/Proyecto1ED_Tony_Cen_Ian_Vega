@@ -10,7 +10,7 @@ public:
 	virtual void insert(E element) = 0; //
 	virtual void append(E element) = 0; //
 	virtual void setElement(E element) = 0;
-	virtual E getElement() = 0;
+	virtual E& getElement() = 0; //parte del cambio, revertir si no permitido
 	virtual E remove() = 0;
 	virtual void clear() = 0;
 	virtual void goToStart() = 0;
