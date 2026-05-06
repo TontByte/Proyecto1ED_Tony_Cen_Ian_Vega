@@ -139,6 +139,7 @@
     <ClInclude Include="Pair.h" />
     <ClInclude Include="PriorityQueue.h" />
     <ClInclude Include="Servicio.h" />
+    <ClInclude Include="ServicioManager.h" />
     <ClInclude Include="Tiquete.h" />
     <ClInclude Include="Usuario.h" />
     <ClInclude Include="UsuarioManager.h" />

@@ -62,5 +62,8 @@
     <ClInclude Include="UsuarioManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ServicioManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
