@@ -59,5 +59,8 @@
     <ClInclude Include="Usuario.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UsuarioManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -141,6 +141,7 @@
     <ClInclude Include="Servicio.h" />
     <ClInclude Include="Tiquete.h" />
     <ClInclude Include="Usuario.h" />
+    <ClInclude Include="UsuarioManager.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="Ventanilla.h" />
   </ItemGroup>

@@ -1,50 +1,40 @@
 #pragma once
-#include <string>
 #include <iostream>
+#include <string>
 using namespace std;
 
-class Servicio {
+class Usuario {
 private:
-    string descripcion;
+    string nombre;
     int prioridad;
-    string area;
 
 public:
 
-    Servicio(string descripcion, int prioridad, string area) {
-        this->descripcion = descripcion;
+    Usuario(string nombre, int prioridad) {
+        this->nombre = nombre;
         this->prioridad = prioridad;
-        this->area = area;
     }
 
-    string getDescripcion() {
-        return descripcion;
+    string getNombre() {
+        return nombre;
     }
 
     int getPrioridad() {
         return prioridad;
     }
 
-    string getArea() {
-        return area;
-    }
-
-    void setDescripcion(string descripcion) {
-        this->descripcion = descripcion;
+    void setNombre(string nombre) {
+        this->nombre = nombre;
     }
 
     void setPrioridad(int prioridad) {
         this->prioridad = prioridad;
     }
 
-    void setArea(string area) {
-        this->area = area;
-    }
-
-    friend ostream& operator<<(ostream& os, const Servicio& s) {
-        os << "Servicio: " << s.descripcion
-            << " | Prioridad: " << s.prioridad
-            << " | Area: " << s.area;
+    friend ostream& operator<<(ostream& os, const Usuario& u) {
+        os << "Usuario: " << u.nombre
+            << " | Prioridad: " << u.prioridad;
         return os;
-    } //prueba
+    }
 };
+
