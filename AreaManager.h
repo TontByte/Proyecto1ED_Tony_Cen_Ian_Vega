@@ -21,19 +21,16 @@ using std::string;
 class AreaManager {
 private:
 	ArrayList<Area*> areas;
-	ServicioManager* sm;
+	ServicioManager& sm;
 
 public:
-	AreaManager(ServicioManager* sm) {
-		this->sm = sm;
-	}
+	AreaManager(ServicioManager& sm) : sm(sm) {}
 
 	~AreaManager() {
 		for (areas.goToStart(); !areas.atEnd(); areas.next()) {
 			delete areas.getElement();
 		}
 		areas.clear();
-		delete sm;
 	}
 
 	AreaManager(const AreaManager&) = delete;
@@ -70,7 +67,7 @@ public:
 		Area* a = areas.remove();
 		string areaCodigo = a->getCodigo();
 		delete a;
-		sm->eliminarServArea(areaCodigo);
+		sm.eliminarServArea(areaCodigo);
 	}
 };
 
