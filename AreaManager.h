@@ -10,6 +10,7 @@ Permite ejecutar funciones sobre las areas deseadas
 #include <string>
 #include "Area.h"
 #include "ArrayList.h"
+#include "Tiquete.h"
 
 using std::cout;
 using std::runtime_error;
@@ -46,6 +47,14 @@ public:
 		}
 		areas.goToPos(choiceIndex);
 		areas.getElement()->modifyV(cant);
+	}
+
+	void addTiqueteArea(int choiceIndex, Tiquete t) {
+		if (choiceIndex < 0 || choiceIndex >= areas.getSize()) {
+			throw runtime_error("Indice seleccionado invalido.");
+		}
+		areas.goToPos(choiceIndex);
+		areas.getElement()->addTiquete(t);
 	}
 
 	void deleteArea(int choiceIndex) { //se utilizara indice para decidir 
