@@ -84,6 +84,10 @@ public:
 		return ventanillas->getSize();
 	}
 
+	string getCodigo() {
+		return codigo;
+	}
+
 	void addTiquete(Tiquete t) {
 		pCola->insert(t, t.getPriority());
 	}

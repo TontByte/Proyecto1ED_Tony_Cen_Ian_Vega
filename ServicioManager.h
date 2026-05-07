@@ -60,4 +60,24 @@ public:
 	int size() {
 		return servicios.getSize();
 	}
+
+	//metodos extra que se utilizan para AreaMangaer
+	void eliminarServArea(string area) {
+		for (int i = 0; i < servicios.getSize(); i++) {
+			servicios.goToPos(i);
+			if (servicios.getElement().getArea() == area) {
+				servicios.remove();
+			}
+		}
+	}
+
+	void printServArea(string area) {
+		cout << "Servicios relacionados a " << area << ":" << endl;
+		for (int i = 0; i < servicios.getSize(); i++) {
+			servicios.goToPos(i);
+			if (servicios.getElement().getArea() == area) {
+				cout << servicios.getElement() << endl;
+			}
+		}
+	}
 };

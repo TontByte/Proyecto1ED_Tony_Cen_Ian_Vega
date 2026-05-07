@@ -11,6 +11,7 @@ Permite ejecutar funciones sobre las areas deseadas
 #include "Area.h"
 #include "ArrayList.h"
 #include "Tiquete.h"
+#include "ServicioManager.h"
 
 using std::cout;
 using std::runtime_error;
@@ -20,15 +21,19 @@ using std::string;
 class AreaManager {
 private:
 	ArrayList<Area*> areas;
+	ServicioManager* sm;
 
 public:
-	AreaManager() {}
+	AreaManager(ServicioManager* sm) {
+		this->sm = sm;
+	}
 
 	~AreaManager() {
 		for (areas.goToStart(); !areas.atEnd(); areas.next()) {
 			delete areas.getElement();
 		}
 		areas.clear();
+		delete sm;
 	}
 
 	AreaManager(const AreaManager&) = delete;
@@ -39,8 +44,6 @@ public:
 		areas.append(a);
 	}
 
-	//agregar muestreo de servicios relacionados al area
-	//agregar confirmacion en programa principal
 	void modifyAreaVentanillas(int cant, int choiceIndex) {
 		if (choiceIndex < 0 || choiceIndex >= areas.getSize()) {
 			throw runtime_error("Indice seleccionado invalido.");
@@ -57,13 +60,17 @@ public:
 		areas.getElement()->addTiquete(t);
 	}
 
+	//agregar muestreo de servicios relacionados al area en menu principal
+	//agregar confirmacion en programa principal
 	void deleteArea(int choiceIndex) { //se utilizara indice para decidir 
 		if (choiceIndex < 0 || choiceIndex >= areas.getSize()) {
 			throw runtime_error("Indice seleccionado invalido.");
 		}
 		areas.goToPos(choiceIndex);
 		Area* a = areas.remove();
+		string areaCodigo = a->getCodigo();
 		delete a;
+		sm->eliminarServArea(areaCodigo);
 	}
 };
 
