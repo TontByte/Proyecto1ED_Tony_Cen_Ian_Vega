@@ -1,3 +1,9 @@
+/*
+Esta es la clase Servicio (escrita principalmente por Ian y revisada/mejorada por Tony)
+Se encarga de representar los diferentes servicios que ofrece el sistema
+Contiene atributos como la descripcion del servicio, su prioridad y el area a la que pertenece
+Esta informacion se utiliza junto con el usuario para calcular la prioridad final del tiquete
+*/
 #pragma once
 #include <string>
 #include <iostream>

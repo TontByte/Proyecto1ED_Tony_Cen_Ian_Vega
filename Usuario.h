@@ -1,3 +1,8 @@
+/*
+Esta es la clase Usuario (escrita principalmente por Ian y revisada/mejorada por Tony)
+Se encarga de representar los tipos de usuarios del sistema (por ejemplo: adulto mayor, regular, etc.)
+Contiene atributos como el nombre del usuario y su prioridad, la cual se usa para calcular la prioridad final del tiquete
+*/
 #pragma once
 #include <iostream>
 #include <string>

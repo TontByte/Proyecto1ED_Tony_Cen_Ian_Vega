@@ -1,3 +1,8 @@
+/*
+Esta es la clase ServicioManager (escrita principalmente por Ian y revisada/mejorada por Tony)
+Es un control de todos los servicios del sistema
+Permite ejecutar funciones como agregar, eliminar, mostrar y reordenar los servicios segun sea necesario
+*/
 #pragma once
 #include <iostream>
 #include "Servicio.h"

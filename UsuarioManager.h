@@ -1,3 +1,8 @@
+/*
+Esta es la clase UsuarioManager (escrita principalmente por Ian y revisada/mejorada por Tony)
+Es un control de todos los tipos de usuario del sistema
+Permite ejecutar funciones como agregar, eliminar y mostrar usuarios, manteniendolos ordenados por prioridad
+*/
 #pragma once
 #include <iostream>
 #include "Usuario.h"
