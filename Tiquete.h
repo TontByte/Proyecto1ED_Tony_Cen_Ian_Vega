@@ -30,7 +30,7 @@ private:
 
 public:
 	Tiquete(char areaC, int prioridadU, int prioridadS) {
-		codigo = areaC + std::to_string(consecutivoGlobal);
+		codigo = string(1, areaC) + std::to_string(consecutivoGlobal);
 		consecutivoGlobal++;
 		arrival = time(0);
 		attended = 0;
@@ -38,7 +38,11 @@ public:
 		pt = (prioridadU * 10) + prioridadS;
 	}
 
-	Tiquete() {}
+	Tiquete() {
+		codigo = "";
+		pt = 0;
+		arrival = attended = waitingTime = 0;
+	}
 
 	void attend() {
 		attended = time(0);
@@ -61,7 +65,7 @@ public:
 	}
 
 	friend ostream& operator<<(ostream& os, const Tiquete& t) {
-		os << "(Codigo: " << t.codigo << "Prioridad: " << t.pt << ")";
+		os << "(Codigo: " << t.codigo << ", Prioridad: " << t.pt << ")";
 		return os;
 	}
 };

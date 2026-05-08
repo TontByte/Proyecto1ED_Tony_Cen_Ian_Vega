@@ -20,20 +20,17 @@ public:
         this->prioridad = prioridad;
     }
 
+    Usuario() {
+        nombre = "";
+        prioridad = 0;
+    }
+
     string getNombre() {
         return nombre;
     }
 
     int getPrioridad() {
         return prioridad;
-    }
-
-    void setNombre(string nombre) {
-        this->nombre = nombre;
-    }
-
-    void setPrioridad(int prioridad) {
-        this->prioridad = prioridad;
     }
 
     friend ostream& operator<<(ostream& os, const Usuario& u) {

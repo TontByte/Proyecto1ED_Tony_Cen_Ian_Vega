@@ -14,6 +14,7 @@ class UsuarioManager {
 private:
     ArrayList<Usuario> usuarios;
 
+    //utiliza bubblesort
     void ordenar() {
         for (int i = 0; i < usuarios.getSize(); i++) {
             for (int j = i + 1; j < usuarios.getSize(); j++) {
@@ -45,7 +46,7 @@ public:
             cout << "Usuario eliminado.\n";
         }
         else {
-            cout << "Indice invalido.\n";
+            throw runtime_error("Indice seleccionado invalido.");
         }
     }
 

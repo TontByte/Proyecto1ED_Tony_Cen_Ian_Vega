@@ -30,7 +30,10 @@ public:
 		atendido = "";
 		cantTiquetesV = 0;
 	}
-	Ventanilla() {}
+	Ventanilla() {
+		nombre = atendido = "";
+		cantTiquetesV = 0;
+	}
 
 	string getNombre() {
 		return nombre;
@@ -48,5 +51,11 @@ public:
 	void printStatistics() {
 		cout << "Tiquetes atendido en " << nombre << ": " << cantTiquetesV << endl;
 	};
+
+	friend ostream& operator<<(ostream& os, const Ventanilla& v) {
+		os << "Ventanilla: " << v.nombre
+			<< " | Ultimo Atendido: " << v.atendido;
+		return os;
+	}
 };
 

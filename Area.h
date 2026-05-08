@@ -50,6 +50,8 @@ public:
 	Area() {
 		ventanillas = nullptr;
 		pCola = nullptr;
+		codigo = descripcion = "";
+		tiempoTotal = cantTiquetes = 0;
 	}
 
 	Area(const Area&) = delete;
@@ -131,8 +133,15 @@ public:
 		}
 		else {
 			cout << "Tiquetes atendido en " << codigo << ": " << cantTiquetes << endl;
-			cout << "Tiempo promedio de espera: " << tiempoTotal / cantTiquetes << endl;
+			double tiempoPromedio = (double)tiempoTotal / (double)cantTiquetes;
+			cout << "Tiempo promedio de espera: " << tiempoPromedio << endl;
 		}
+	}
+
+	friend ostream& operator<<(ostream& os, const Area& a) {
+		os << "Area: " << a.codigo
+			<< " | Descripcion: " << a.descripcion;
+		return os;
 	}
 
 };

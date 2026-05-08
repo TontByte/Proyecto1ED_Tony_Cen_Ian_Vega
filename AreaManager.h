@@ -69,6 +69,20 @@ public:
 		delete a;
 		sm.eliminarServArea(areaCodigo);
 	}
+
+	void printAreas() {
+		for (areas.goToStart(); !areas.atEnd(); areas.next()) {
+			areas.getElement()->print();
+		}
+	}
+
+	Area* getArea(int choiceIndex) {
+		if (choiceIndex < 0 || choiceIndex >= areas.getSize()) {
+			throw runtime_error("Indice seleccionado invalido.");
+		}
+		areas.goToPos(choiceIndex);
+		return areas.getElement();
+	}
 };
 
 //test

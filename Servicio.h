@@ -23,6 +23,11 @@ public:
         this->area = area;
     }
 
+    Servicio() {
+        area = descripcion = "";
+        prioridad = 0;
+    }
+
     string getDescripcion() {
         return descripcion;
     }
@@ -33,18 +38,6 @@ public:
 
     string getArea() {
         return area;
-    }
-
-    void setDescripcion(string descripcion) {
-        this->descripcion = descripcion;
-    }
-
-    void setPrioridad(int prioridad) {
-        this->prioridad = prioridad;
-    }
-
-    void setArea(string area) {
-        this->area = area;
     }
 
     friend ostream& operator<<(ostream& os, const Servicio& s) {

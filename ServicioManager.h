@@ -27,19 +27,21 @@ public:
 			cout << "servicio eliminado.\n";
 		}
 		else {
-			cout << "Indice invalido.\n";
+			throw runtime_error("Indice seleccionado invalido.");
 		}
 	}
 
 	void reordenarServicio(int origen, int destino) {
 		if (origen < 0 || origen >= servicios.getSize() || destino < 0 || destino >= servicios.getSize()) {
-			cout << "Indice invalido.\n";
-			return;
+			throw runtime_error("Indice seleccionado invalido.");
 		}
 		//obtener el servicio a mover
 		servicios.goToPos(origen);
 		Servicio temp = servicios.getElement();
 		servicios.remove();
+		if (origen < destino) {
+			destino--;
+		}
 		//insertar el servicio en la nueva posicion
 		servicios.goToPos(destino);
 		servicios.insert(temp);
@@ -63,18 +65,20 @@ public:
 
 	//metodos extra que se utilizan para AreaMangaer
 	void eliminarServArea(string area) {
-		for (int i = 0; i < servicios.getSize(); i++) {
-			servicios.goToPos(i);
+		servicios.goToStart();
+		while (!servicios.atEnd()) {
 			if (servicios.getElement().getArea() == area) {
 				servicios.remove();
+			}
+			else {
+				servicios.next();
 			}
 		}
 	}
 
 	void printServArea(string area) {
 		cout << "Servicios relacionados a " << area << ":" << endl;
-		for (int i = 0; i < servicios.getSize(); i++) {
-			servicios.goToPos(i);
+		for (servicios.goToStart(); !servicios.atEnd(); servicios.next()) {
 			if (servicios.getElement().getArea() == area) {
 				cout << servicios.getElement() << endl;
 			}
