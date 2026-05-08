@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include "Tiquete.h"
+#include "AreaManager.h"
+#include "ServicioManager.h"
+#include "UsuarioManager.h"
 
 
 
