@@ -91,36 +91,38 @@ void drawColas(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
 }
 
 void createTicket(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
-    //add loop
-    if (minReqs) {
-        int option = 0;
-        cout << "Ingrese la opcion deseada: " << endl;
-        cout << "1. Crear tiquete" << endl;
-        cout << "2. Regresar al menu" << endl;
-        option = getNumValue(2, 1);
-        if (option == 1) {
-            cout << "Seleccione el tipo de usuario y el servicio requerido:" << endl;
-            um.mostrarUsuarios();
-            Usuario tipoU = um.getUsuario(getNumValue(um.size(), 0));
-            cout << "Usuario seleccionado: " << tipoU.getNombre() << endl;
-            sm.mostrarServicios();
-            Servicio tipoS = sm.getServicio(getNumValue(sm.size(), 0));
-            cout << "Servicio seleccionado: " << tipoS.getDescripcion() << endl;
-            Tiquete t(tipoS.getArea()[0], tipoU.getPrioridad(), tipoS.getPrioridad());
-            cout << "Tiquete generado: " << t << endl;
-            int pos = am.getAreaIndex(tipoS.getArea());
-            am.addTiqueteArea(pos, t);
-        }
-        else if (option == 2) {
-            return;
+    bool stop = false;
+    while (!stop) {
+        if (!minReqs(am, sm, um)) {
+            int option = 0;
+            cout << "Ingrese la opcion deseada: " << endl;
+            cout << "1. Crear tiquete" << endl;
+            cout << "2. Regresar al menu" << endl;
+            option = getNumValue(2, 1);
+            if (option == 1) {
+                cout << "Seleccione el tipo de usuario y el servicio requerido:" << endl;
+                um.mostrarUsuarios();
+                Usuario tipoU = um.getUsuario(getNumValue(um.size(), 0));
+                cout << "Usuario seleccionado: " << tipoU.getNombre() << endl;
+                sm.mostrarServicios();
+                Servicio tipoS = sm.getServicio(getNumValue(sm.size(), 0));
+                cout << "Servicio seleccionado: " << tipoS.getDescripcion() << endl;
+                Tiquete t(tipoS.getArea()[0], tipoU.getPrioridad(), tipoS.getPrioridad());
+                cout << "Tiquete generado: " << t << endl;
+                int pos = am.getAreaIndex(tipoS.getArea());
+                am.addTiqueteArea(pos, t);
+            }
+            else if (option == 2) {
+                stop = true;
+            }
+            else {
+                throw runtime_error("Opcion invalida seleccionada.");
+            }
         }
         else {
-            throw runtime_error("Opcion invalida seleccionada.");
+            cout << "No se ha cumplido la cantidad minima de Areas, Usuarios y Servicios requeridos para utilizar el programa." << endl;
+            waitEnter();
         }
-    }
-    else {
-        cout << "No se ha cumplido la cantidad minima de Areas, Usuarios y Servicios requeridos para utilizar el programa." << endl;
-        waitEnter();
     }
 }
 
