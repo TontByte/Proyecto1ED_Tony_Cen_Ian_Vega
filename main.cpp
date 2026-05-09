@@ -18,6 +18,7 @@ using std::string;
 using std::endl;
 
 void waitEnter() {
+    cout << "Presione enter para regresar al menu." << endl;
     string input;
     getline(cin, input);
 }
@@ -62,6 +63,15 @@ void clearScreen() {
     system("cls");
 }
 
+bool minReqs(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
+    if (am.size() == 0 || sm.size() == 0 || um.size() == 0) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
 int drawMainMenu() {
     cout << "--- Sistema de administracion de colas ---" << endl;
     cout << "--- Seleccione una opcion utilizando su indice." << endl;
@@ -75,13 +85,44 @@ int drawMainMenu() {
 }
 
 void drawColas(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
-    cout << "Cantidad de areas: " << am.getCantAreas() << endl;
+    cout << "Cantidad de areas: " << am.size() << endl;
     am.printAreas();
-    cout << "Presione enter para regresar al menu." << endl; 
     waitEnter();
 }
 
-void getTicket(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {}
+void createTicket(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
+    //add loop
+    if (minReqs) {
+        int option = 0;
+        cout << "Ingrese la opcion deseada: " << endl;
+        cout << "1. Crear tiquete" << endl;
+        cout << "2. Regresar al menu" << endl;
+        option = getNumValue(2, 1);
+        if (option == 1) {
+            cout << "Seleccione el tipo de usuario y el servicio requerido:" << endl;
+            um.mostrarUsuarios();
+            Usuario tipoU = um.getUsuario(getNumValue(um.size(), 0));
+            cout << "Usuario seleccionado: " << tipoU.getNombre() << endl;
+            sm.mostrarServicios();
+            Servicio tipoS = sm.getServicio(getNumValue(sm.size(), 0));
+            cout << "Servicio seleccionado: " << tipoS.getDescripcion() << endl;
+            Tiquete t(tipoS.getArea()[0], tipoU.getPrioridad(), tipoS.getPrioridad());
+            cout << "Tiquete generado: " << t << endl;
+            int pos = am.getAreaIndex(tipoS.getArea());
+            am.addTiqueteArea(pos, t);
+        }
+        else if (option == 2) {
+            return;
+        }
+        else {
+            throw runtime_error("Opcion invalida seleccionada.");
+        }
+    }
+    else {
+        cout << "No se ha cumplido la cantidad minima de Areas, Usuarios y Servicios requeridos para utilizar el programa." << endl;
+        waitEnter();
+    }
+}
 
 void attend(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {}
 
@@ -117,7 +158,10 @@ int main(){
                 drawColas(areaManager, servicioManager, usuarioManager);
                 currentScreen = 0;
             }
-            else if (currentScreen == 2) {}
+            else if (currentScreen == 2) {
+                createTicket(areaManager, servicioManager, usuarioManager);
+                currentScreen = 0;
+            }
             else if (currentScreen == 3) {}
             else if (currentScreen == 4) {}
             else if (currentScreen == 5) {}

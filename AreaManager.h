@@ -85,7 +85,15 @@ public:
 		return areas.getElement();
 	}
 
-	int getCantAreas() {
+	int getAreaIndex(string codigo) {
+		for (areas.goToStart(); !areas.atEnd(); areas.next()) {
+			if (areas.getElement()->getCodigo() == codigo) {
+				return areas.getPos();
+			}
+		}
+	}
+
+	int size() {
 		return areas.getSize();
 	}
 };
