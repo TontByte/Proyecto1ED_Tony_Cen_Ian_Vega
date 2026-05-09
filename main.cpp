@@ -102,12 +102,14 @@ void createTicket(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
             if (option == 1) {
                 cout << "Seleccione el tipo de usuario y el servicio requerido:" << endl;
                 um.mostrarUsuarios();
-                Usuario tipoU = um.getUsuario(getNumValue(um.size() - 1, 0));
+                Usuario& tipoU = um.getUsuario(getNumValue(um.size() - 1, 0));
                 cout << "Usuario seleccionado: " << tipoU.getNombre() << endl;
                 sm.mostrarServicios();
-                Servicio tipoS = sm.getServicio(getNumValue(sm.size() - 1, 0));
+                Servicio& tipoS = sm.getServicio(getNumValue(sm.size() - 1, 0));
                 cout << "Servicio seleccionado: " << tipoS.getDescripcion() << endl;
                 Tiquete t(tipoS.getArea()[0], tipoU.getPrioridad(), tipoS.getPrioridad());
+                tipoS.addTiqueteCant();
+                tipoU.addTiqueteCant();
                 cout << "Tiquete generado: " << t << endl;
                 int pos = am.getAreaIndex(tipoS.getArea());
                 am.addTiqueteArea(pos, t);
@@ -153,20 +155,55 @@ void attendT(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
     }
 }
 
+void adminUsuarios(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {}
+
+void adminAreas(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {}
+
+void adminServicios(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {}
+
+void reset(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {}
+
 void admin(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {}
 
-void statistics(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {}
+void statistics(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
+    if (minReqs(am, sm, um)) {
+        cout << "Estadisticas: " << endl;
+        cout << "Por area: " << endl;
+        am.printAreasStatistics();
+        cout << endl;
+
+        cout << "Por ventanilla: " << endl;
+        am.printAVStatistics();
+        cout << endl;
+
+        cout << "Por servicio: " << endl;
+        sm.printStatistics();
+        cout << endl;
+
+        cout << "Por tipo de usuario: " << endl;
+        um.printStatistics();
+        cout << endl;
+
+        waitEnter();
+    }
+    else {
+        cout << "No se ha cumplido la cantidad minima de Areas, Usuarios y Servicios requeridos para utilizar el programa." << endl;
+        waitEnter();
+    }
+}
 
 
 int main(){
-    //definir variables para simplificar semantica
-    int mainMenu = 0;
-    int colas = 1;
-    int getTicket = 2;
-    int attend = 3;
-    int admin = 4;
-    int statistics = 5;
-    int exit = 6;
+    /*
+    definir variables para simplificar semantica
+    mainMenu = 0;
+    colas = 1;
+    getTicket = 2;
+    attend = 3;
+    admin = 4;
+    statistics = 5;
+    exit = 6;
+    */
 
     int currentScreen = 0;
     
@@ -194,7 +231,10 @@ int main(){
                 currentScreen = 0;
             }
             else if (currentScreen == 4) {}
-            else if (currentScreen == 5) {}
+            else if (currentScreen == 5) {
+                statistics(areaManager, servicioManager, usuarioManager);
+                currentScreen = 0;
+            }
             else if (currentScreen == 6) {
                 cout << "Gracias por utilizar nuestro sistema. Adios." << endl;
             }

@@ -77,6 +77,18 @@ public:
 		}
 	}
 
+	void printAreasStatistics() {
+		for (areas.goToStart(); !areas.atEnd(); areas.next()) {
+			areas.getElement()->printStatistics();
+		}
+	}
+
+	void printAVStatistics() {
+		for (areas.goToStart(); !areas.atEnd(); areas.next()) {
+			areas.getElement()->printStatisticsVentanilla();
+		}
+	}
+
 	void mostrarAreas() {
 		cout << "Areas" << endl;
 		for (int i = 0; i < areas.getSize(); i++) {

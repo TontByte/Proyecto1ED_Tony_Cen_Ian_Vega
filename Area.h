@@ -166,6 +166,12 @@ public:
 		}
 	}
 
+	void printStatisticsVentanilla() {
+		for (ventanillas->goToStart(); !ventanillas->atEnd(); ventanillas->next()) {
+			ventanillas->getElement().printStatistics();
+		}
+	}
+
 	friend ostream& operator<<(ostream& os, const Area& a) {
 		os << "Area: " << a.codigo
 			<< " | Descripcion: " << a.descripcion;

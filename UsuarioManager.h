@@ -58,7 +58,13 @@ public:
         }
     }
 
-    Usuario getUsuario(int index) {
+    void printStatistics() {
+        for (usuarios.goToStart(); !usuarios.atEnd(); usuarios.next()) {
+            usuarios.getElement().printStatistics();
+        }
+    }
+
+    Usuario& getUsuario(int index) {
         usuarios.goToPos(index);
         return usuarios.getElement();
     }

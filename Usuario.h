@@ -13,16 +13,20 @@ private:
     string nombre;
     int prioridad;
 
+    //para stats
+    int cantTiquetes;
+
 public:
 
     Usuario(string nombre, int prioridad) {
         this->nombre = nombre;
         this->prioridad = prioridad;
+        cantTiquetes = 0;
     }
 
     Usuario() {
         nombre = "";
-        prioridad = 0;
+        prioridad = cantTiquetes = 0;
     }
 
     string getNombre() {
@@ -31,6 +35,14 @@ public:
 
     int getPrioridad() {
         return prioridad;
+    }
+
+    void addTiqueteCant() {
+        cantTiquetes++;
+    }
+
+    void printStatistics() {
+        cout << "Tiquetes emitidos al tipo " << nombre << ": " << cantTiquetes << endl;
     }
 
     friend ostream& operator<<(ostream& os, const Usuario& u) {

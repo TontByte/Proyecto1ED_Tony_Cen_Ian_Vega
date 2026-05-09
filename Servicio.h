@@ -15,6 +15,8 @@ private:
     int prioridad;
     string area;
 
+    int cantTiquetes;
+
 public:
 
     Servicio(string descripcion, int prioridad, string area) {
@@ -38,6 +40,14 @@ public:
 
     string getArea() {
         return area;
+    }
+
+    void addTiqueteCant() {
+        cantTiquetes++;
+    }
+
+    void printStatistics() {
+        cout << "Tiquetes solicitados al servicio de " << descripcion << ": " << cantTiquetes << endl;
     }
 
     friend ostream& operator<<(ostream& os, const Servicio& s) {
