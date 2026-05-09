@@ -8,6 +8,7 @@ Tiene los metodos principales que se ejecutan en relacion al manejo de tiquetes
 
 #pragma once
 #include <iostream>
+#include <ostream>
 #include <stdexcept>
 #include <string>
 

@@ -2,16 +2,59 @@
 //
 
 #include <iostream>
+#include <string>
+#include <stdexcept>
 #include "Tiquete.h"
 #include "AreaManager.h"
 #include "ServicioManager.h"
 #include "UsuarioManager.h"
 
+using std::cout;
+using std::cin;
+using std::getline;
+using std::runtime_error;
+using std::string;
+using std::endl;
+
+string getStringValue(string datoDeseado) {
+    cout << datoDeseado << "(ingrese aqui): ";
+    string value;
+    getline(cin, value);
+    return value;
+}
+
+int getNumValue(int maxIndex) {
+    if (maxIndex < 0) {
+        throw runtime_error("Implementacion erronea de getMaxValue");
+    }
+
+    int res;
+    bool gotten = false;
+
+    while (!gotten) {
+        cout << "Ingrese el indice del elemento que desea seleccionar:" << endl;
+        cin >> res;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Seleccion invalida. Volver a intentar." << endl;
+        }
+        else if (res < 0 || res > maxIndex) {
+            cin.ignore(1000, '\n');
+            cout << "Seleccion invalida. Volver a intentar." << endl;
+        }
+        else {
+            cin.ignore(1000, '\n');
+            gotten = true;
+            return res;
+        }
+    }
+}
 
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main(){
+    
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
