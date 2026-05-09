@@ -31,8 +31,8 @@ string getStringValue(string datoDeseado) {
 }
 
 int getNumValue(int maxIndex, int minIndex) {
-    if (maxIndex < 0 || minIndex > maxIndex || maxIndex < minIndex) {
-        throw runtime_error("Implementacion erronea de getMaxValue");
+    if (maxIndex < 0 || minIndex > maxIndex) {
+        throw runtime_error("Implementacion erronea de getNumValue");
     }
 
     int res;
@@ -93,7 +93,7 @@ void drawColas(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
 void createTicket(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
     bool stop = false;
     while (!stop) {
-        if (!minReqs(am, sm, um)) {
+        if (minReqs(am, sm, um)) {
             int option = 0;
             cout << "Ingrese la opcion deseada: " << endl;
             cout << "1. Crear tiquete" << endl;
@@ -102,10 +102,10 @@ void createTicket(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
             if (option == 1) {
                 cout << "Seleccione el tipo de usuario y el servicio requerido:" << endl;
                 um.mostrarUsuarios();
-                Usuario tipoU = um.getUsuario(getNumValue(um.size(), 0));
+                Usuario tipoU = um.getUsuario(getNumValue(um.size() - 1, 0));
                 cout << "Usuario seleccionado: " << tipoU.getNombre() << endl;
                 sm.mostrarServicios();
-                Servicio tipoS = sm.getServicio(getNumValue(sm.size(), 0));
+                Servicio tipoS = sm.getServicio(getNumValue(sm.size() - 1, 0));
                 cout << "Servicio seleccionado: " << tipoS.getDescripcion() << endl;
                 Tiquete t(tipoS.getArea()[0], tipoU.getPrioridad(), tipoS.getPrioridad());
                 cout << "Tiquete generado: " << t << endl;
@@ -126,7 +126,32 @@ void createTicket(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
     }
 }
 
-void attend(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {}
+void attendT(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
+    if (minReqs(am, sm, um)) {
+        am.mostrarAreas();
+        cout << "Seleccione el area donde desea antender un tiquete: " << endl;
+        int index = getNumValue(am.size() - 1 , 0);
+        Area* a = am.getArea(index);
+        if (a->getCantT() <=0) {
+            cout << "No hay tiquetes en esta area" << endl;
+            waitEnter();
+            return;
+        }
+        else {
+            cout << "Siguiente tiquete a atender: " << a->getMinTicket() << endl;
+            cout << endl;
+            a->printVentanillas();
+            cout << "Seleccione la ventanilla donde desea antender: " << endl;
+            int vIndex = getNumValue(a->getCantV() - 1, 0);
+            string vName = a->getVName(vIndex);
+            a->attend(vName);
+        }
+    }
+    else {
+        cout << "No se ha cumplido la cantidad minima de Areas, Usuarios y Servicios requeridos para utilizar el programa." << endl;
+        waitEnter();
+    }
+}
 
 void admin(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {}
 
@@ -164,10 +189,15 @@ int main(){
                 createTicket(areaManager, servicioManager, usuarioManager);
                 currentScreen = 0;
             }
-            else if (currentScreen == 3) {}
+            else if (currentScreen == 3) {
+                attendT(areaManager, servicioManager, usuarioManager);
+                currentScreen = 0;
+            }
             else if (currentScreen == 4) {}
             else if (currentScreen == 5) {}
-            else if (currentScreen == 6) {}
+            else if (currentScreen == 6) {
+                cout << "Gracias por utilizar nuestro sistema. Adios." << endl;
+            }
         }
         catch (const exception& e) {
             cout << "Error: " << e.what() << endl;

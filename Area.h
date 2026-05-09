@@ -87,8 +87,24 @@ public:
 		return ventanillas->getSize();
 	}
 
+	int getCantT() {
+		return pCola->getSize();
+	}
+
 	string getCodigo() {
 		return codigo;
+	}
+
+	string getMinTicket() {
+		return pCola->min().getCodigo();
+	}
+
+	string getVName(int vIndex) {
+		if (vIndex < 0 || vIndex > ventanillas->getSize()) {
+			throw runtime_error("Indice de ventanilla invalido");
+		}
+		ventanillas->goToPos(vIndex);
+		return ventanillas->getElement().getNombre();
 	}
 
 	void addTiquete(Tiquete t) {
@@ -118,6 +134,15 @@ public:
 		if (!found) {
 			throw runtime_error("Ventanilla no encontrada");
 		}
+	}
+
+	void printVentanillas() {
+		cout << "Ventanillas: " << endl;;
+		for (int i = 0; i < ventanillas->getSize(); i++) {
+			ventanillas->goToPos(i);
+			cout << i << ". " << ventanillas->getElement() << endl;
+		}
+
 	}
 
 	void print() {

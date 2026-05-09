@@ -77,6 +77,14 @@ public:
 		}
 	}
 
+	void mostrarAreas() {
+		cout << "Areas" << endl;
+		for (int i = 0; i < areas.getSize(); i++) {
+			areas.goToPos(i);
+			cout << i << ". " << areas.getElement()->getCodigo() << endl;
+		}
+	}
+
 	Area* getArea(int choiceIndex) {
 		if (choiceIndex < 0 || choiceIndex >= areas.getSize()) {
 			throw runtime_error("Indice seleccionado invalido.");
