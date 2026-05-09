@@ -53,8 +53,21 @@ int getNumValue(int maxIndex) {
 }
 
 
+
+
+
 int main(){
+    //definir variables para simplificar semantica
+    int mainMenu = 0;
+    int getTicket = 1;
+    int attend = 2;
+    int admin = 3;
+    int cleanData = 4;
+    int statistics = 5;
+    int exit = 6;
     
+
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
