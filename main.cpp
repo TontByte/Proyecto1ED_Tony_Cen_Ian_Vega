@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <cstdlib>
 #include <string>
 #include <stdexcept>
 #include "Tiquete.h"
@@ -15,6 +16,11 @@ using std::getline;
 using std::runtime_error;
 using std::string;
 using std::endl;
+
+void waitEnter() {
+    string input;
+    getline(cin, input);
+}
 
 string getStringValue(string datoDeseado) {
     cout << datoDeseado << "(ingrese aqui): ";
@@ -52,7 +58,17 @@ int getNumValue(int maxIndex) {
     }
 }
 
+void clearScreen() {
+    system("cls");
+}
 
+void drawMainMenu(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
+    cout << "--- Sistema de administracion de colas ---" << endl;
+    cout << "Cantidad de areas: " << am.getCantAreas() << endl;
+    am.printAreas();
+    cout << "Presione enter para menu"; //???? mistake
+    waitEnter();
+}
 
 
 
@@ -65,9 +81,29 @@ int main(){
     int cleanData = 4;
     int statistics = 5;
     int exit = 6;
+
+    int currentScreen = 0;
     
+    ServicioManager servicioManager;
+    UsuarioManager usuarioManager;
+    AreaManager areaManager(servicioManager);
 
+    while (currentScreen != 0) {
+        try {
+            clearScreen();
 
+            if (currentScreen == 0) {}
+            else if (currentScreen == 1) {}
+            else if (currentScreen == 2) {}
+            else if (currentScreen == 3) {}
+            else if (currentScreen == 4) {}
+            else if (currentScreen == 5) {}
+            else if (currentScreen == 6) {}
+        }
+        catch (const exception& e) {
+            cout << "Error: " << e.what() << endl;
+        }
+    }
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

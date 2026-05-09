@@ -83,6 +83,10 @@ public:
 		areas.goToPos(choiceIndex);
 		return areas.getElement();
 	}
+
+	int getCantAreas() {
+		return areas.getSize();
+	}
 };
 
 //test

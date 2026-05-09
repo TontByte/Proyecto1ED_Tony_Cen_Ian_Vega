@@ -121,11 +121,13 @@ public:
 	}
 
 	void print() {
-		cout << codigo << "(" << descripcion << ")" << endl;
+		cout << codigo << "(" << descripcion << ")" << ", Ventanillas: " << ventanillas->getSize() << endl;
 		for (ventanillas->goToStart(); !ventanillas->atEnd(); ventanillas->next()) {
 			ventanillas->getElement().print();
 		}
-		cout << endl;
+		cout << "Tiquetes: ";
+		pCola->print();
+		cout << "---------------------------" << endl;
 	}
 
 	void printStatistics() {
