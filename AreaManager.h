@@ -41,6 +41,7 @@ public:
 		areas.append(a);
 	}
 
+	//add fail points
 	void modifyAreaVentanillas(int cant, int choiceIndex) {
 		if (choiceIndex < 0 || choiceIndex >= areas.getSize()) {
 			throw runtime_error("Indice seleccionado invalido.");

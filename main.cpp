@@ -29,8 +29,8 @@ string getStringValue(string datoDeseado) {
     return value;
 }
 
-int getNumValue(int maxIndex) {
-    if (maxIndex < 0) {
+int getNumValue(int maxIndex, int minIndex) {
+    if (maxIndex < 0 || minIndex > maxIndex || maxIndex < minIndex) {
         throw runtime_error("Implementacion erronea de getMaxValue");
     }
 
@@ -46,7 +46,7 @@ int getNumValue(int maxIndex) {
             cin.ignore(1000, '\n');
             cout << "Seleccion invalida. Volver a intentar." << endl;
         }
-        else if (res < 0 || res > maxIndex) {
+        else if (res < 0 || res > maxIndex || res < minIndex) {
             cin.ignore(1000, '\n');
             cout << "Seleccion invalida. Volver a intentar." << endl;
         }
@@ -62,11 +62,22 @@ void clearScreen() {
     system("cls");
 }
 
-void drawMainMenu(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
+int drawMainMenu() {
     cout << "--- Sistema de administracion de colas ---" << endl;
+    cout << "--- Seleccione una opcion utilizando su indice." << endl;
+    cout << "1. Estado de colas" << endl;
+    cout << "2. Crear tiquete" << endl;
+    cout << "3. Atender tiquete" << endl;
+    cout << "4. Administracion" << endl;
+    cout << "5. Estadisticas" << endl;
+    cout << "6. Salir" << endl;
+    return getNumValue(6, 1);
+}
+
+void drawColas(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
     cout << "Cantidad de areas: " << am.getCantAreas() << endl;
     am.printAreas();
-    cout << "Presione enter para menu"; //???? mistake
+    cout << "Presione enter para regresar al menu." << endl; 
     waitEnter();
 }
 
@@ -75,10 +86,10 @@ void drawMainMenu(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
 int main(){
     //definir variables para simplificar semantica
     int mainMenu = 0;
-    int getTicket = 1;
-    int attend = 2;
-    int admin = 3;
-    int cleanData = 4;
+    int colas = 1;
+    int getTicket = 2;
+    int attend = 3;
+    int admin = 4;
     int statistics = 5;
     int exit = 6;
 
@@ -88,12 +99,17 @@ int main(){
     UsuarioManager usuarioManager;
     AreaManager areaManager(servicioManager);
 
-    while (currentScreen != 0) {
+    while (currentScreen != 7) {
         try {
             clearScreen();
 
-            if (currentScreen == 0) {}
-            else if (currentScreen == 1) {}
+            if (currentScreen == 0) {
+                currentScreen = drawMainMenu();
+            }
+            else if (currentScreen == 1) {
+                drawColas(areaManager, servicioManager, usuarioManager);
+                currentScreen = 0;
+            }
             else if (currentScreen == 2) {}
             else if (currentScreen == 3) {}
             else if (currentScreen == 4) {}
