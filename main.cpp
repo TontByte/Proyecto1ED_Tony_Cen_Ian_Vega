@@ -81,6 +81,13 @@ void drawColas(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
     waitEnter();
 }
 
+void getTicket(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {}
+
+void attend(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {}
+
+void admin(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {}
+
+void statistics(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {}
 
 
 int main(){
@@ -99,7 +106,7 @@ int main(){
     UsuarioManager usuarioManager;
     AreaManager areaManager(servicioManager);
 
-    while (currentScreen != 7) {
+    while (currentScreen != 6) {
         try {
             clearScreen();
 
@@ -120,6 +127,8 @@ int main(){
             cout << "Error: " << e.what() << endl;
         }
     }
+
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
