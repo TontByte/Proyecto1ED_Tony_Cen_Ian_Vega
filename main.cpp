@@ -183,7 +183,7 @@ void adminUsuarios(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
             if (um.size() > 0) {
                 cout << "Seleccione el tipo de usuario que desea borrar (con su indice): " << endl;
                 um.mostrarUsuarios();
-                int choice = getNumValue(um.size(), 0);
+                int choice = getNumValue(um.size() - 1, 0);
                 string uName = um.getUsuario(choice).getNombre();
                 um.eliminarUsuario(choice);
                 am.deleteUsuarioTickets(uName);
@@ -223,37 +223,52 @@ void adminAreas(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
             cout << "Ingrese los datos solicitados para agregar un area: " << endl;
             string codigo = getStringValue("Codigo");
             string descripcion = getStringValue("Descripcion corta");
-            int cantVentanillas = getNumValue(1024, 0);
+            cout << "Ingrese la cantidad de ventanillas que debe tener el area: " << endl;
+            int cantVentanillas = getNumValue(10, 1);
             am.createArea(descripcion, codigo, cantVentanillas);
             cout << "Se agrego el area " << codigo << "(" << descripcion << ")" << " con " << cantVentanillas << " ventanillas" << endl;
             waitEnter();
             option = 0;
         }
         else if (option == 2) {
-            cout << "Seleccione el area que desea borrar (con su indice): " << endl;
-            am.mostrarAreas();
-            int choice = getNumValue(am.size(), 0);
-            cout << "Se borraran los siguientes servicios junto al area" << endl;
-            am.mostrarServiciosRelacionados(choice);
-            cout << "Si desea proceder con la eliminacion del area y sus servicios relacionados, ingrese 0" << endl;
-            cout << "Si no desea seguir adelante, ingrese 1" << endl;
-            int confirmacion = getNumValue(1, 0);
-            if (confirmacion == 0) {
-                am.deleteArea(choice);
+            if (am.size() > 0) {
+                cout << "Seleccione el area que desea borrar (con su indice): " << endl;
+                am.mostrarAreas();
+                int choice = getNumValue(am.size() - 1, 0);
+                cout << "Se borraran los siguientes servicios junto al area" << endl;
+                am.mostrarServiciosRelacionados(choice);
+                cout << "Si desea proceder con la eliminacion del area y sus servicios relacionados, ingrese 0" << endl;
+                cout << "Si no desea seguir adelante, ingrese 1" << endl;
+                int confirmacion = getNumValue(1, 0);
+                if (confirmacion == 0) {
+                    am.deleteArea(choice);
+                }
+                waitEnter();
+                option = 0;
             }
-            waitEnter();
-            option = 0;
+            else {
+                cout << "Aun no existen areas para eliminar" << endl;
+                waitEnter();
+                option = 0;
+            }
         }
         else if (option == 3) {
+            if (am.size() > 0) {
                 cout << "Seleccione el area al que le desea modificar la cantidad de ventanillas: " << endl;
                 am.mostrarAreas();
-                int choice = getNumValue(am.size(), 0);
+                int choice = getNumValue(am.size() - 1, 0);
                 cout << "Indique la cantidad de ventanillas que desea tener: " << endl;
                 int cant = getNumValue(10, 1);
                 am.modifyAreaVentanillas(cant, choice);
-                cout << "Area de " << am.getArea(choice) << "ahora tiene " << cant << " ventanillas" << endl;
+                cout << "Area de " << am.getArea(choice)->getCodigo() << " ahora tiene " << cant << " ventanillas" << endl;
                 waitEnter();
                 option = 0;
+            }
+            else {
+                cout << "Aun no existen areas para modificar" << endl;
+                waitEnter();
+                option = 0;
+            }
         }
         else if (option == 4) {
             stop = true;
@@ -285,7 +300,7 @@ void adminServicios(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
                 cout << "Prioridad: " << endl;
                 int prioridad = getNumValue(1024, 0);
                 cout << "Seleccione el area a la que esta asociada el servicio: " << endl;
-                am.printAreas();
+                am.mostrarAreas();
                 int index = getNumValue(am.size(), 0);
                 string areaCode = am.getArea(index)->getCodigo();
                 sm.agregarServicio(descripcion, prioridad, areaCode);
@@ -303,7 +318,7 @@ void adminServicios(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
             if (sm.size() > 0) {
                 cout << "Seleccione el servicio que desea borrar (con su indice): " << endl;
                 sm.mostrarServicios();
-                int choice = getNumValue(sm.size(), 0);
+                int choice = getNumValue(sm.size() - 1, 0);
                 string sName = sm.getServicio(choice).getDescripcion();
                 sm.eliminarServicio(choice);
                 am.deleteUsuarioTickets(sName);
@@ -320,9 +335,9 @@ void adminServicios(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
             if (sm.size() > 1) {
                 cout << "Seleccione el servicio que desea reubicar: " << endl;
                 sm.mostrarServicios();
-                int origen = getNumValue(sm.size(), 0);
+                int origen = getNumValue(sm.size() - 1, 0);
                 cout << "Seleccione la posicion destino con el indice: " << endl;
-                int destino = getNumValue(sm.size(), 0);
+                int destino = getNumValue(sm.size() - 1, 0);
                 sm.reordenarServicio(origen, destino);
                 waitEnter();
                 option = 0;
