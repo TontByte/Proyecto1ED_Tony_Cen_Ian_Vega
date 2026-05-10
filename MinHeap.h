@@ -119,6 +119,10 @@ public:
 		return size;
 	}
 
+	E getElement(int pos) {
+		return elements[pos];
+	}
+
 	void print() {
 		cout << "[";
 		for (int i = 0; i < size; i++) {

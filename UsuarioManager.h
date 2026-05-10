@@ -72,4 +72,10 @@ public:
     int size() {
         return usuarios.getSize();
     }
+
+    void reset() {
+        for (usuarios.goToStart(); !usuarios.atEnd(); usuarios.next()) {
+            usuarios.getElement().reset();
+        }
+    }
 };

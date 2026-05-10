@@ -55,6 +55,15 @@ public:
 			cout << i << ": " << servicios.getElement() << endl;
 		}
 	}
+
+	void mostrarServiciosArea(string area) {
+		for (servicios.goToStart(); !servicios.atEnd(); servicios.next()) {
+			if (servicios.getElement().getArea() == area) {
+				cout << servicios.getElement() << endl;
+			}
+		}
+	}
+
 	Servicio& getServicio(int index) {
 		servicios.goToPos(index);
 		return servicios.getElement();
@@ -73,6 +82,12 @@ public:
 			else {
 				servicios.next();
 			}
+		}
+	}
+
+	void reset() {
+		for (servicios.goToStart(); !servicios.atEnd(); servicios.next()) {
+			servicios.getElement().reset();
 		}
 	}
 

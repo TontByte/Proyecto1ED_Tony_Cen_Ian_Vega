@@ -20,6 +20,8 @@ using std::runtime_error;
 class Tiquete{
 private:
 	string codigo;
+	string servicio;
+	string usuario;
 	int pt; //prioridad total
 	time_t arrival;
 	time_t attended;
@@ -29,7 +31,7 @@ private:
 	static int consecutivoGlobal;
 
 public:
-	Tiquete(char areaC, int prioridadU, int prioridadS) {
+	Tiquete(char areaC, int prioridadU, int prioridadS, string servicio, string usuario) {
 		codigo = string(1, areaC) + std::to_string(consecutivoGlobal);
 		consecutivoGlobal++;
 		arrival = time(0);
@@ -39,7 +41,7 @@ public:
 	}
 
 	Tiquete() {
-		codigo = "";
+		codigo = servicio = usuario = "";
 		pt = 0;
 		arrival = attended = waitingTime = 0;
 	}
@@ -62,6 +64,14 @@ public:
 			throw runtime_error("Tiquete no ha sido atendido");
 		}
 		return waitingTime;
+	}
+
+	string getServicio() {
+		return servicio;
+	}
+
+	string getUsuario() {
+		return usuario;
 	}
 
 	friend ostream& operator<<(ostream& os, const Tiquete& t) {

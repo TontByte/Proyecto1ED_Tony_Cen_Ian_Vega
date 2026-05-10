@@ -50,6 +50,10 @@ public:
         cout << "Tiquetes solicitados al servicio de " << descripcion << ": " << cantTiquetes << endl;
     }
 
+    void reset() {
+        cantTiquetes = 0;
+    }
+
     friend ostream& operator<<(ostream& os, const Servicio& s) {
         os << "Servicio: " << s.descripcion
             << " | Prioridad: " << s.prioridad

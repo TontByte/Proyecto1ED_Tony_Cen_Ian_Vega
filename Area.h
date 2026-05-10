@@ -172,6 +172,30 @@ public:
 		}
 	}
 
+	void reset() {
+		pCola->clear();
+		tiempoTotal = cantTiquetes = 0;
+		for (ventanillas->goToStart(); !ventanillas->atEnd(); ventanillas->next()) {
+			ventanillas->getElement().reset();
+		}
+	}
+
+	void deleteUsuarioTickets(string uName) {
+		for (int i = 0; i < pCola->getSize(); i++) {
+			if (pCola->getElement(i).getUsuario() == uName) {
+				pCola->remove(i);
+			}
+		}
+	}
+
+	void deleteServicioTickets(string sName) {
+		for (int i = 0; i < pCola->getSize(); i++) {
+			if (pCola->getElement(i).getServicio() == sName) {
+				pCola->remove(i);
+			}
+		}
+	}
+
 	friend ostream& operator<<(ostream& os, const Area& a) {
 		os << "Area: " << a.codigo
 			<< " | Descripcion: " << a.descripcion;

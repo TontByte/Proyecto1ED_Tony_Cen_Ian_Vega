@@ -45,6 +45,10 @@ public:
         cout << "Tiquetes emitidos al tipo " << nombre << ": " << cantTiquetes << endl;
     }
 
+    void reset() {
+        cantTiquetes = 0;
+    }
+
     friend ostream& operator<<(ostream& os, const Usuario& u) {
         os << "Usuario: " << u.nombre
             << " | Prioridad: " << u.prioridad;

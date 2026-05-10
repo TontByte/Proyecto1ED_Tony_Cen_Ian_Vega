@@ -39,6 +39,11 @@ public:
 		return p.value;
 	}
 
+	E remove(int pos) {
+		Pair<int, E> p = pairs->remove(pos);
+		return p.value;
+	}
+
 	E removeMin() {
 		Pair<int, E> p = pairs->removeFirst();
 		return p.value;
@@ -54,6 +59,11 @@ public:
 
 	bool isEmpty() {
 		return pairs->isEmpty();
+	}
+
+	E getElement(int pos) {
+		Pair<int, E> p = pairs->getElement(pos);
+		return p.value;
 	}
 
 	void print() {

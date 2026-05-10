@@ -53,6 +53,11 @@ public:
 		cout << "Tiquetes atendido en " << nombre << ": " << cantTiquetesV << endl;
 	};
 
+	void reset() {
+		cantTiquetesV = 0;
+		atendido = "";
+	}
+
 	friend ostream& operator<<(ostream& os, const Ventanilla& v) {
 		os << "Ventanilla: " << v.nombre
 			<< " | Ultimo Atendido: " << v.atendido;

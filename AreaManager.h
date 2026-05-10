@@ -97,6 +97,15 @@ public:
 		}
 	}
 
+	void mostrarServiciosRelacionados(int choiceIndex) {
+		if (choiceIndex < 0 || choiceIndex >= areas.getSize()) {
+			throw runtime_error("Indice seleccionado invalido.");
+		}
+		areas.goToPos(choiceIndex);
+		string areaCodigo = areas.getElement()->getCodigo();
+		sm.mostrarServiciosArea(areaCodigo);
+	}
+
 	Area* getArea(int choiceIndex) {
 		if (choiceIndex < 0 || choiceIndex >= areas.getSize()) {
 			throw runtime_error("Indice seleccionado invalido.");
@@ -116,6 +125,25 @@ public:
 	int size() {
 		return areas.getSize();
 	}
+
+	void reset() {
+		for (areas.goToStart(); !areas.atEnd(); areas.next()) {
+			areas.getElement()->reset();
+		}
+	}
+
+	void deleteUsuarioTickets(string uName) {
+		for (areas.goToStart(); !areas.atEnd(); areas.next()) {
+			areas.getElement()->deleteUsuarioTickets(uName);
+		}
+	}
+
+	void deleteServicioTickets(string sName) {
+		for (areas.goToStart(); !areas.atEnd(); areas.next()) {
+			areas.getElement()->deleteServicioTickets(sName);
+		}
+	}
+
 };
 
 //test
