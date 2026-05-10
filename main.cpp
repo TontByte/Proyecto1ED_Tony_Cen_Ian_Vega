@@ -325,7 +325,7 @@ void adminServicios(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
                 int choice = getNumValue(sm.size() - 1, 0);
                 string sName = sm.getServicio(choice).getDescripcion();
                 sm.eliminarServicio(choice);
-                am.deleteUsuarioTickets(sName);
+                am.deleteServicioTickets(sName);
                 waitEnter();
                 option = 0;
             }
