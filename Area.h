@@ -162,7 +162,7 @@ public:
 		else {
 			cout << "Tiquetes atendido en " << codigo << ": " << cantTiquetes << endl;
 			double tiempoPromedio = (double)tiempoTotal / (double)cantTiquetes;
-			cout << "Tiempo promedio de espera: " << tiempoPromedio << endl;
+			cout << "Tiempo promedio de espera: " << tiempoPromedio << "s" << endl;
 		}
 	}
 

@@ -109,6 +109,10 @@ void createTicket(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
                 cout << "Servicio seleccionado: " << tipoS.getDescripcion() << endl;
                 Tiquete t(tipoS.getArea()[0], tipoU.getPrioridad(), tipoS.getPrioridad(), tipoS.getDescripcion(), tipoU.getNombre());
                 tipoS.addTiqueteCant();
+                //debug
+                tipoS.printStatistics();
+
+
                 tipoU.addTiqueteCant();
                 cout << "Tiquete generado: " << t << endl;
                 int pos = am.getAreaIndex(tipoS.getArea());
@@ -301,10 +305,10 @@ void adminServicios(AreaManager& am, ServicioManager& sm, UsuarioManager& um) {
                 int prioridad = getNumValue(1024, 0);
                 cout << "Seleccione el area a la que esta asociada el servicio: " << endl;
                 am.mostrarAreas();
-                int index = getNumValue(am.size(), 0);
+                int index = getNumValue(am.size() - 1, 0);
                 string areaCode = am.getArea(index)->getCodigo();
                 sm.agregarServicio(descripcion, prioridad, areaCode);
-                cout << "Se agrego el servicio " << descripcion << " de prioridad " << prioridad << "asociado al area " << areaCode << endl;
+                cout << "Se agrego el servicio " << descripcion << " de prioridad " << prioridad << " asociado al area " << areaCode << endl;
                 waitEnter();
                 option = 0;
             }

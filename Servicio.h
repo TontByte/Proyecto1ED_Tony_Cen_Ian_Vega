@@ -23,11 +23,13 @@ public:
         this->descripcion = descripcion;
         this->prioridad = prioridad;
         this->area = area;
+        cantTiquetes = 0;
     }
 
     Servicio() {
         area = descripcion = "";
         prioridad = 0;
+        cantTiquetes = 0;
     }
 
     string getDescripcion() {

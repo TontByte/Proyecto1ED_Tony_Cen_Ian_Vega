@@ -54,7 +54,7 @@ public:
         cout << "\nUsuarios \n";
         for (int i = 0; i < usuarios.getSize(); i++) {
             usuarios.goToPos(i);
-            cout << i << ". " << usuarios.getElement() << endl;
+            cout << i << ". " << usuarios.getElement().getNombre() << endl;
         }
     }
 
